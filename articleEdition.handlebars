@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+{{#each Article}}
+<div class="w3-card-4 w3-margin w3-white">
+<!--    <img src="{{{Image}}}" alt="Error" style="width:10%;"> -->
+    <div class="w3-container">
+        <form id="contact" action="" method="post">
+            <h3>Edition d'article</h3>
+            <fieldset>
+                <h4>Titre de l'article:</h4>
+                <input placeholder="Titre de l'article" type="text" tabindex="1" name="titre" value="{{{Titre}}}" required autofocus>
+            </fieldset>
+            <fieldset>
+                <h4>Description du titre:</h4>
+                <input placeholder="Description du titre" type="text" tabindex="1" name="desctitreee" value="{{{TitreDescription}}}" required autofocus>
+            </fieldset>
+            <fieldset>
+                <h4>Corps de l'article:</h4>
+                <TEXTAREA name="article" rows=10 cols=80>{{{Contenu}}}</TEXTAREA>
+            </fieldset>
+            {{#if apost}}
+            {{#if post}}
+                <fieldset>
+                    <input type="checkbox" id="publique" name="publique" checked>
+                    <label>Publique</label>
+                </fieldset>
+            {{/if}}
+            {{#if ppost}}
+                <fieldset>
+                    <input type="checkbox" id="publique" name="publique">
+                    <label>Publique</label>
+                </fieldset>
+            {{/if}}
+            {{/if}}
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Sauvegarder les modifications</button>
+            </fieldset>
+        </form>
+        {{#if statut_art}}
+        <button onclick="window.location.href = '?index={{{possi}}}&&article={{{id}}}&&edition=Suprimmer'">Suprimmmer l'article</button>
+        {{/if}}
+    </div>
+</div>
+{{/each}}
+
+</html>
