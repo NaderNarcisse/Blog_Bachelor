@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<title>Blog bachelor</title>
+
+{{#if crea}}
+    {{{body}}}
+{{else}}
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    </style>
+    <body class="w3-light-grey">
+
+    <!-- w3-content defines a container for fixed size centered content,
+    and is wrapped around the whole page content, except for the footer in this example -->
+    <div class="w3-content" style="max-width:1400px">
+
+        <!-- Header -->
+        <header class="w3-container w3-center w3-padding-32">
+            <h1><b>Blog bachelor</b></h1>
+            <p>Bienvenu dans le blog bachelor: <span class="w3-tag" id="name">{{{Nom}}}</span>
+                </script></p></p>
+            <p>Salutation l'ami, regarde ce qu'il se passe chez les bachelors.</p>
+        </header>
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="LogOut">
+            <input type="submit"
+                   value="LogOut"
+                   style="float:left; margin-right: 1rem;">
+        </form>
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="profil">
+            <input type="submit"
+                   value="Profil">
+        </form>
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="article">
+            <input type="submit"
+                   value="Voir les articles"
+                   style="float:left; margin-right: 1rem;">
+        </form>
+        {{#if publisher}}
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="NArt">
+            <input type="submit"
+                   value="Voir les articles non publiés"
+                   style="float:left; margin-right: 1rem;">
+        </form>
+        {{/if}}
+        {{#if writer}}
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="MesArt">
+            <input type="submit"
+                   value="Voir mes articles"
+                   style="float:left; margin-right: 1rem;">
+        </form>
+        {{/if}}
+        </form>
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="Voir_ASC">
+            <input type="submit"
+                   value="Voir les derniers articles publiés"
+                   style="float:left; margin-right: 1rem;">
+        </form>        </form>
+        <form action="/">
+            <input type="hidden"
+                   name="page"
+                   value="Voir_DESC">
+            <input type="submit"
+                   value="Voir les premiers articles publiés">
+        </form>
+
+        {{{body}}}
+
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container">
+                {{#if page_retour}}
+                    <button onclick="window.location.href = '?index={{{page_retour}}}'">Retour</button>
+                {{/if}}
+                {{#if page_retour_art}}
+                    {{#if statut_art}}
+                        <button onclick="window.location.href = '?index={{{page_retour_art}}}&&article={{{page_retour_art_id}}}'">Retour</button>
+                    {{else}}
+                        <button onclick="window.location.href = '?index={{{page_retour_art}}}'">Retour</button>
+                    {{/if}}
+                {{/if}}
+                {{#if buton_Av_Ap}}
+                <h3><b>Lire la suite</b></h><br>
+                    {{#if Av}}
+                        <form action="/">
+                            <input type="hidden"
+                                   name="index"
+                                   value="{{{Av}}}">
+                            <input type="submit"
+                                   value="Précédent"
+                                   style="float:left; margin-right: 1rem;">
+                        </form>
+                    {{else}}
+                        <form action="/">
+                            <input type="hidden"
+                                   name="index"
+                                   value="{{{Av}}}">
+                            <input type="submit"
+                                   value="Précédent"
+                                   style="float:left; margin-right: 1rem;" disabled>
+                        </form>
+                    {{/if}}
+                    {{#if Ap}}
+                        <form action="/">
+                            <input type="hidden"
+                                   name="index"
+                                   value="{{{Ap}}}">
+                            <input type="submit"
+                                   value="Suivant">
+                        </form>
+                    {{else}}
+                        <form action="/">
+                            <input type="hidden"
+                                   name="index"
+                                   value="{{{Ap}}}">
+                            <input type="submit"
+                                   value="Suivant" disabled>
+                        </form>
+                    {{/if}}
+                    {{/if}}
+                    {{#if admin}}
+                        <form action="/">
+                            <input type="hidden"
+                                   name="page"
+                                   value="role">
+                            <input type="submit"
+                                   value="Gestion des rôles"
+                                   style="float:left; margin-right: 1rem;">
+                        </form>
+                    {{/if}}
+                    {{#if ecriture}}
+                        <form action="/">
+                            <input type="hidden"
+                                   name="page"
+                                   value="AddArt">
+                            <input type="submit"
+                                   value="Ecrire un nouvel article">
+                        </form>
+                    {{/if}}
+            </div>
+
+        </div>
+    </html>
+
+
+{{/if}}
+
+
+
+<script>
+    {{#if maj_user}}
+        alert("Utilisateur mis à jour");
+    {{/if}}
+    {{#if error_maj_user}}
+        alert("Role incorect");
+    {{/if}}
+    {{#if error_no_mail}}
+        alert("Mail incorect");
+    {{/if}}
+    {{#if page_interdite}}
+        alert("Vous n'êtes pas autaurisé a venir sur cette page.");
+    {{/if}}
+    {{#if error_log}}
+        alert("Mail ou mot de passe incorrecte.");
+    {{/if}}
+    {{#if error_mail}}
+        alert("Mail déjà utilisé.");
+    {{/if}}
+    {{#if error_mdp}}
+        alert("Les mots de passes sont différents.");
+    {{/if}}
+    {{#if error_mdp_change}}
+        alert("Le mot de passes est incorrect.");
+    {{/if}}
+    {{#if Maj_info}}
+        alert("Les informations ont été mis à jour.");
+    {{/if}}
+    {{#if Maj_mdp}}
+        alert("Le mot de passe a été mis à jour.");
+    {{/if}}
+    {{#if page_supr}}
+        alert("L'article {{page_supr}} a été suprimmé.");
+    {{/if}}
+</script>
