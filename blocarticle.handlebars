@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+{{#each Article}}
+<div class="w3-card-4 w3-margin w3-white">
+<!--    <img src="{{{Image}}}" alt="Error" style="width:10%;"> -->
+    <div class="w3-container">
+        <h3><b>{{{Titre}}}</b></h3>
+        <h5>{{{TitreDescription}}}           <span class="w3-opacity">{{{Date}}}</span></h5>
+    </div>
+
+    <div class="w3-container">
+        <p>{{{Contenu}}}</p>
+        <hr>
+        <p>Auteur: {{{id_authors}}}</p>
+        <button onclick="window.location.href = '?index={{{possi}}}&&article={{{id}}}'">Voir</button>
+        <div class="w3-row">
+            <div class="w3-col m8 s12">
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+
+</html>
