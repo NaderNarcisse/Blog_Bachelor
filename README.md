@@ -1,2 +1,2 @@
 # Blog_Bachelor
-School Project Javascript and Node.js
+School Project using Javascript and Node.js
